@@ -6,26 +6,20 @@ public class RingOfFire_2 {
 
 
     public static void main(String[] args) {
-        method(null);
+        method();
     }
 
-    public static boolean[] method(int[] args) {
+    public static void method() {
         Scanner scanner = new Scanner(System.in);
         int N, C, K;
-/*
-        N = args[0];
-        C = args[1];
-        K = args[2];*/
 
         N = scanner.nextInt();
         C = scanner.nextInt();
         K = scanner.nextInt();
-
-/*
-        N = 5000;
-        C = 10000;
-        K = 1000;
-*/
+        scanner.close();
+       /* N = 11;
+        C = 2;
+        K = 0;*/
         //Nul-indekseret
         boolean[] allStudents = new boolean[N];
 
@@ -34,28 +28,34 @@ public class RingOfFire_2 {
         int mainIndex = 1;
         int countOfFalse = 1;
 
-        while (tæller > K) {
-            if (!allStudents[((mainIndex - 1) % N)]) {
-                if (countOfFalse % C == 0) {
-                    allStudents[(mainIndex - 1) % N] = true;
-                    --tæller;
-                }
-                ++countOfFalse;
+        if (C == 0) {
+            for (int i = 0; i < N - K; i++) {
+                allStudents[i] = true;
+                System.out.println("0");
             }
-            ++mainIndex;
+        } else if (K == 0) {
+            for (int i = 0; i < N; i++) {
+                allStudents[i] = true;
+                System.out.println("0");
+            }
+        } else if (N == 0) {
+            System.out.println("0");
+        } else {
+            while (tæller > K) {
+                if (!allStudents[((mainIndex - 1) % N)]) {
+                    if (countOfFalse % C == 0) {
+                        allStudents[(mainIndex - 1) % N] = true;
+                        --tæller;
+                    }
+                    ++countOfFalse;
+                }
+                ++mainIndex;
+            }
         }
 
-        //Nul-indekseret
         for (int i = 0; i < allStudents.length; i++) {
             if (!allStudents[i])
                 System.out.print(i + 1 + " ");
         }
-        System.out.println("\n");
-
-        return allStudents;
     }
 }
-
-/*  if (!allStudents[((mainIndex - 1) % N)]) {
-//fejlen er at den ikke tæller hver anden - der er true - men også hver anden der er false
-            }*/
