@@ -58,7 +58,6 @@ public class CaesarAs2_6 {
 
         while (i > -1) {
             if (!inputs[i].equalsIgnoreCase("^") && !isInteger(inputs[i])) {
-                //printString = printString + inputs[i] + " ";
                 addTo(inputs[i]);
                 printStringLength++;
                 i--;

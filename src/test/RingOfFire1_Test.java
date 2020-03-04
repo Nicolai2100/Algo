@@ -45,6 +45,33 @@ class RingOfFire1_Test {
     }
 
     @Test
+    void name2() {
+/*
+//        System.out.println(((251+11)%25) - 1);
+        System.out.println(((11 + 251 - (int) 'a') % 26) + (int) 'a');
+        System.out.println(((251 + 11) % 25) - 1);
+        System.out.println((((332 + 5) % 26) - 1));
+
+        //toEncode[i] = (toEncode[i] + 13 - (int)'a') % 26 + (int)'a';
+*/
+
+        System.out.println(encode("A", 251));
+
+    }
+
+    private static String encode(String line, int shift) {
+        char[] toEncode = line.toCharArray();
+        for (int i = 0; i < toEncode.length; i++) {
+            if (Character.isLetter(toEncode[i])) {
+                toEncode[i] = (char) ((toEncode[i] + shift-1 - (int) 'A') % 25 + (int) 'A');
+
+            }
+        }
+        line = String.valueOf(toEncode);
+        return line;
+    }
+
+    @Test
     void name() {
 
         String[] chars = new String[26];
